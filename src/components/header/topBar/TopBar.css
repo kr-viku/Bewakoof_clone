@@ -1,0 +1,44 @@
+#topBar-container{
+    background-color: #EEEEEE;
+    height: 4vh;
+    font-size: 65%;
+    padding: 0.4%;
+    margin:0 1px;
+    font-family: montserrat, sans-serif;
+    font-weight: 900;
+    color: rgba(0, 0, 0,0.9);
+    display: flex;
+    justify-content: space-around;
+}
+.left-items{
+    display: flex;
+    justify-content:space-between;
+    list-style-type: none;
+    width: 20vw;
+    cursor: pointer;
+}
+.right-items{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 10vw;
+    cursor: pointer;
+}
+@media screen and (max-width:990px)
+{
+    #topBar-container{
+        display: none;
+    }
+}
+@media screen and (max-width:1280px)
+{
+    #topBar-container{
+        justify-content: space-between
+    }
+    .left-items{
+        width: 30vw;
+    }
+    .right-items{
+        width: 15vw;
+    }
+}
