@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import NavBarRoutes from './NavBarRoutes'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
 import './NavBar.css'
+import SideBar from '../sideBar/SideBar';
 const NavBar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const handleMenuBarClick=()=>{
+    setShowMenu(!showMenu);
+    // console.log('clicked');
+  }
   return (
     <div className='navbar-container'>
       <div className='navbar-logoandlinks'>
@@ -18,6 +24,12 @@ const NavBar = () => {
         <Link to='/MobileCovers' className='item'>MOBILE COVERS</Link>
         </div>
         {/* <NavBarRoutes/> */}
+      </div>
+      <div className='mobile-screen-menu'>
+        <MenuIcon className='menubar-icon' onClick={handleMenuBarClick}/>
+        <Link to='/'>
+          <img src='https://images.bewakoof.com/web/ic-web-head-bwk-primary-logo-eyes.svg' alt='smallscreen-logo'/>
+        </Link>
       </div>
       <div className='navbar-search-section'>
         <SearchIcon className='search-icon'/>
@@ -32,6 +44,11 @@ const NavBar = () => {
         <ShoppingBagOutlinedIcon/>
         </Link>
       </div>
+      {
+        showMenu && (
+          <SideBar handleMenuBarClick={handleMenuBarClick} />
+        )
+      }
     </div>
   )
 }
