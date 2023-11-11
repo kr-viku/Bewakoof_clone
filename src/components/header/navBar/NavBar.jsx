@@ -8,10 +8,13 @@ import './NavBar.css'
 import SideBar from '../sideBar/SideBar';
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  
   const handleMenuBarClick=()=>{
     setShowMenu(!showMenu);
     // console.log('clicked');
   }
+
+
   return (
     <div className='navbar-container'>
       <div className='navbar-logoandlinks'>

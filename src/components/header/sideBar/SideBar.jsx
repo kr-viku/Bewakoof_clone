@@ -5,6 +5,7 @@ import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 
 const SideBar = ({handleMenuBarClick}) => {
   return (
+
     <div className='sidebar'>
       <CancelTwoToneIcon onClick={handleMenuBarClick} className='cross-icon'/>
       <div className='wlc-login'>
@@ -28,6 +29,12 @@ const SideBar = ({handleMenuBarClick}) => {
       </div>
 
       <h4 className='title'>ABOUT US</h4>
+      <div className='about-us-links'>
+      <Link to='/OurStory' className='link'>Our Story</Link>
+      <Link to='/Fanbook' className='link'>Fanbook</Link>
+      <Link to='/Blog' className='link'>Blog</Link>
+      <Link to='/Login' className='link'>Login</Link>
+      </div>
     </div>
   )
 }

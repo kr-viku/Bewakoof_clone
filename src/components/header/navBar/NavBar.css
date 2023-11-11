@@ -1,10 +1,11 @@
 .navbar-container{
+    position: fixed;
     display: flex;
     justify-content: space-around;
-    /* width: 100vw; */
+    width: 100vw;
     height: 3vw;
     margin: 0.1%;
-    padding: 2%;
+    padding: 1.5%;
     font-weight: 400;
     font-size: 85%;
     align-items: center;

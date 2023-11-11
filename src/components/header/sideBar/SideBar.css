@@ -3,10 +3,11 @@
     position: absolute;
     left: 0;
     top: 1%;
-    width: 30vw;
-    height: 99vh;
+    width: 26vw;
+    height: 104vh;
     background-color:whitesmoke;
-    padding: 2%;
+    padding: 3%;
+    scroll-behavior: smooth;
 }
 .cross-icon{
     position: absolute;
@@ -42,4 +43,18 @@
     text-decoration: none;
     color: black;
     font-weight:bolder;
+}
+.contact-us-links{
+    display: flex;
+    height: 18vh;
+    padding: 4%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.about-us-links{
+    display: flex;
+    height: 28vh;
+    padding: 4%;
+    flex-direction: column;
+    justify-content: space-between;
 }

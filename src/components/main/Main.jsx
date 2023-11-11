@@ -1,8 +1,11 @@
 import React from 'react'
+import Routers from '../../routes/Routers'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <>
+    <Routers/>
+    </>
   )
 }
 
