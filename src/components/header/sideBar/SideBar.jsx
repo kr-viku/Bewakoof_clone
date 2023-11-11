@@ -22,6 +22,7 @@ const SideBar = ({handleMenuBarClick}) => {
       <h4 className='title'>CONTACT US</h4>
       <div className='contact-us-links'>
       <Link to='/HelpAndSupport' className='link'>Help & Support</Link>
+      <Link to='/FeedbackAndSuggestions' className='link'>Feedback & Suggestions</Link>
       </div>
     </div>
   )
