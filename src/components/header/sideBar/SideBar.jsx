@@ -26,8 +26,11 @@ const SideBar = ({handleMenuBarClick}) => {
       <Link to='/FeedbackAndSuggestions' className='link'>Feedback & Suggestions</Link>
       <Link to='/BecomeASeller' className='link'>Become a Seller</Link>
       </div>
+
+      <h4 className='title'>ABOUT US</h4>
     </div>
   )
 }
 
-export default SideBar
+export default SideBar;
+
