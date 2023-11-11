@@ -19,6 +19,7 @@ const SideBar = ({handleMenuBarClick}) => {
         <Link to='/CustomiseYourOwnT-Shirt' className='link'>Customise your own T-Shirt</Link>
         <Link to='/MobileCovers' className='link'>Mobile Covers</Link>
       </div>
+      
       <h4 className='title'>CONTACT US</h4>
       <div className='contact-us-links'>
       <Link to='/HelpAndSupport' className='link'>Help & Support</Link>
