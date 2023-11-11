@@ -11,7 +11,7 @@ const SideBar = ({handleMenuBarClick}) => {
       <h3 className='wlc'>Welcome Guest</h3>
       <h4 className='login'>Login / Sign Up</h4>
       </div>
-      <h4 className='shop-in'>SHOP IN</h4>
+      <h4 className='title'>SHOP IN</h4>
       <div className='shop-in-links'>
         <Link to='/Men' className='link'>Men</Link>
         <Link to='/Women' className='link'>Women</Link>
@@ -19,6 +19,7 @@ const SideBar = ({handleMenuBarClick}) => {
         <Link to='/CustomiseYourOwnT-Shirt' className='link'>Customise your own T-Shirt</Link>
         <Link to='/MobileCovers' className='link'>Mobile Covers</Link>
       </div>
+      <h4 className='title'>CONTACT US</h4>
     </div>
   )
 }

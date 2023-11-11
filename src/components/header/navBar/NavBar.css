@@ -48,6 +48,7 @@
     display: flex;
     background-color: #EAEAEA;
     border-radius: 0.3rem;
+    text-overflow: hidden;
 }
 .search-icon{
     color: #757575;
@@ -56,7 +57,7 @@
 .mobile-screen-menu{
     display: none;
 }
-@media screen and (max-width:990px)
+@media only screen and (max-width:990px)
 {
     /* .navbar-logoandlinks{
         display: none;
@@ -90,5 +91,32 @@
     }
     .navbar-logoandlinks{
         display: none;
+    }
+}
+@media only screen and (min-width:990px){
+    .mobile-screen-menu{
+        display: none;
+    }
+}
+@media only screen and (max-width:1200px){
+    .navbar-container{
+        font-size: 75%;
+    }
+}
+
+@media only screen and (max-width:630px){
+    .navbar-container{
+        padding: 5.5%;
+    }
+    .search-box{
+        padding: 0%;
+        
+    }
+    .navbar-search-section{
+        padding: 0;
+        height: 4vh;
+    }
+    .search-icon{
+        margin: 0%;
     }
 }
