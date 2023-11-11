@@ -24,6 +24,7 @@ const SideBar = ({handleMenuBarClick}) => {
       <div className='contact-us-links'>
       <Link to='/HelpAndSupport' className='link'>Help & Support</Link>
       <Link to='/FeedbackAndSuggestions' className='link'>Feedback & Suggestions</Link>
+      <Link to='/BecomeASeller' className='link'>Become a Seller</Link>
       </div>
     </div>
   )
