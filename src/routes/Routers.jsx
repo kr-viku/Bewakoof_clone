@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Men from "../components/pages/Men";
 import Women from "../components/pages/Women";
 import MobileCover from "../components/pages/MobileCover";
-import Home from "../components/pages/Home";
+import Home from "../components/home/Home";
 
 const Routers = () => {
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
@@ -6,9 +6,33 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import './NavBar.css'
 import SideBar from '../sideBar/SideBar';
+import { useBaseApi } from '../../contextApi/BaseDomainContext';
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  
+  const [searchTerm, setSearchTerm] = useState(null)
+
+  const baseApi = useBaseApi();
+
+
+  function handleSearch(e){
+    const value = e.target.value;
+    setSearchTerm(value)
+  }
+
+   async function fetchingProducts(){
+    try{
+      const res = await axios.get(`${baseApi}api/v1/ecommerce/clothes/products?search={"title":${searchTerm}}`)
+      console.log(res);
+    }
+    catch(e){
+      console.log('error');
+    }
+   }
+  useEffect(
+    ()=>{
+      fetchingProducts()
+    },[searchTerm]
+  )
   const handleMenuBarClick=()=>{
     setShowMenu(!showMenu);
     // console.log('clicked');
@@ -36,7 +60,7 @@ const NavBar = () => {
       </div>
       <div className='navbar-search-section'>
         <SearchIcon className='search-icon'/>
-        <input placeholder='Search by product, category or collection' className='search-box'/>
+        <input placeholder='Search by product, category or collection' className='search-box' onChange={handleSearch}/>
       </div>
       <div className='navbar-login-fav-cart-country'>
         <Link to='/Login' className='item'>Login</Link>

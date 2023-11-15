@@ -1,0 +1,22 @@
+#slider-container{
+    position: absolute;
+    top: 10%;
+}
+.slider-images{
+    /* width: 31.9vw; */
+    height: 78vh;
+    margin: 2px;
+    border: 20px solid white;
+}
+.alice-carousel__wrapper
+{
+    position: absolute;
+    top: 5%;
+}
+@media only screen and (max-width: 1200px)
+{
+    .slider-images{
+        height: 50vh;
+        border: 10px;
+    }
+}

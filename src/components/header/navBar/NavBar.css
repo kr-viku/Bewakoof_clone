@@ -10,7 +10,9 @@
     font-size: 85%;
     align-items: center;
     border-bottom: 1px solid #aeabab;
-    
+    z-index: 9;
+    top: 4.5%;
+    background-color:#FFFFFF ;
 }
 .logo{
     height: 3vh;
