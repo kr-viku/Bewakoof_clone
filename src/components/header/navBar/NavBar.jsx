@@ -59,7 +59,7 @@ const NavBar = () => {
         </div>
         {/* <NavBarRoutes/> */}
       </div>
-      
+
       <div className="mobile-screen-menu">
         <MenuIcon className="menubar-icon" onClick={handleMenuBarClick} />
         <Link to="/">
@@ -94,3 +94,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
