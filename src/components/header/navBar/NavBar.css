@@ -79,6 +79,7 @@
     .navbar-search-section{
         width: 40vw;
         margin-left: 20%;
+        margin-bottom: 3%;
     }
     .search-box{
         width: 40vw;
@@ -96,30 +97,34 @@
         display: none;
     }
 }
-@media only screen and (min-width:990px){
+@media only screen and (min-width:980px){
     .mobile-screen-menu{
         display: none;
     }
+    
 }
 @media only screen and (max-width:1200px){
     .navbar-container{
         font-size: 75%;
+        padding: 2%;
     }
 }
 
 @media only screen and (max-width:630px){
     .navbar-container{
         padding: 5.5%;
+        top: 0;
+        height: 3vh;
     }
     .search-box{
         padding: 0%;
-        
     }
     .navbar-search-section{
         padding: 0;
-        height: 4vh;
+        height: 3vh;
     }
     .search-icon{
         margin: 0%;
     }
 }
+
