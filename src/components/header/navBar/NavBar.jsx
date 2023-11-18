@@ -7,6 +7,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import "./NavBar.css";
 import SideBar from "../sideBar/SideBar";
 import { useBaseApi } from "../../contextApi/BaseDomainContext";
+
+
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState(null);

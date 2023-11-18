@@ -1,6 +1,7 @@
 .featured-slider {
     margin:11%;
     margin-top: 30px;
+    margin-bottom: 2%;
   }
   .featured-slider ul {
     overflow-x: scroll;
