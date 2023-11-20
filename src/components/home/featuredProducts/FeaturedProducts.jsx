@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import './FeaturedProducts.css';
 
 const featuredProducts = {
-    'New Arrivals': '	./src/assets/images/newarrivals.png',
+    'New Arrivals': './src/assets/images/newarrivals.png',
     'Bestsellers': './src/assets/images/bestsellers.png',
     'Winterwear': './src/assets/images/winterwear.png',
     'Official Collaborations': './src/assets/images/officialcollaborations.png',
