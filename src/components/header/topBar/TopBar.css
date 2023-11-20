@@ -1,8 +1,8 @@
 #topBar-container{
     background-color: #EEEEEE;
-    height: 5vh;
+    height: 3vh;
     width: 100vw;
-    font-size: 65%;
+    font-size: 60%;
     padding: 0.4%;
     margin:0 1px;
     font-family: montserrat, sans-serif;
@@ -10,7 +10,7 @@
     color: rgba(0, 0, 0,0.9);
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    /* position: fixed; */
     z-index: 9;
 }
 .left-items{

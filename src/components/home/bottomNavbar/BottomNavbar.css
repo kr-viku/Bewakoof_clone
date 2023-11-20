@@ -6,7 +6,7 @@
     font-size: 90%;
     flex-wrap: wrap;
     /* margin: 0 10%; */
-    position: fixed;
+    /* position: fixed; */
     z-index: 9;
     top: 11.2%;
     width: 100vw;

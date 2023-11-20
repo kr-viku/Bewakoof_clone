@@ -53,8 +53,9 @@ const NavBar = () => {
         </Link>
       </div>
 
-       <SearchInput/>
+      
       <div className="navbar-login-fav-cart-country">
+      <SearchInput/>
         <Link to="/Login" className="item">
           Login
         </Link>

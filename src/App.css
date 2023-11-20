@@ -11,3 +11,12 @@
   margin: 0;
   padding: 0;
 }
+.header-container{
+  height: 5vh;
+}
+.main{
+  height: calc(100vh-18vh);
+}
+.footer-container{
+  height: 13vh;
+}

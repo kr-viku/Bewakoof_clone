@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import SearchIcon from "@mui/icons-material/Search";
 import { useBaseApi } from '../../contextApi/BaseDomainContext';
-import ProductCard from './productcard/ProductCard';
+import ProductCard from '../../productcard/ProductCard';
 const SearchInput = () => {
     const [searchTerm, setSearchTerm] = useState(null);
     const [loading, setLoading] = useState(true);

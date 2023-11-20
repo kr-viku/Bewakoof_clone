@@ -1,7 +1,6 @@
 .main{
-    position: absolute;
+    /* position: absolute; */
     top: 5.5rem;
     /* background-color: pink; */
     width: 99vw;
-    height: 100vh;
 }
