@@ -1,9 +1,10 @@
 #slider-container{
     position: absolute;
     top: 10%;
+    width: 90vw;
 }
 .slider-images{
-    width: 97% !important;
+    width: 90% !important;
     height: 70vh;
     margin: 2px;
     /* border: 20px solid white; */
