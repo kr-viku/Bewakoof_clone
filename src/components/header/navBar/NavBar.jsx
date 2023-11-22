@@ -9,7 +9,7 @@ import { useBaseApi } from "../../contextApi/BaseDomainContext";
 import SearchInput from "./SearchInput";
 
 
-const NavBar = () => {
+const NavBar = ({isSearching, setIsSearching}) => {
   const [showMenu, setShowMenu] = useState(false);
  
 
@@ -55,7 +55,7 @@ const NavBar = () => {
 
       
       <div className="navbar-login-fav-cart-country">
-      <SearchInput/>
+      <SearchInput isSearching={isSearching} setIsSearching= {setIsSearching}/>
         <Link to="/Login" className="item">
           Login
         </Link>

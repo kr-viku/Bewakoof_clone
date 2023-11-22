@@ -1,11 +1,14 @@
 import React from 'react'
 import './ProductCard.css'
-const ProductCard = ({data}) => {
-    console.log(data);
+const ProductCard = ({products}) => {
+    // console.log(data);
+    console.log('products' ,products)
   return (
+
+    
     <div className='product-container'>
         {
-            data?.map((product)=>(
+            products?.map((product)=>(
                 <div>
                     <img src={product.displayImage}/>
                 </div>

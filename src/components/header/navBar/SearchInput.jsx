@@ -3,22 +3,31 @@ import React, { useEffect, useState } from 'react'
 import SearchIcon from "@mui/icons-material/Search";
 import { useBaseApi } from '../../contextApi/BaseDomainContext';
 import ProductCard from '../../productcard/ProductCard';
-const SearchInput = () => {
+import { useNavigate } from 'react-router-dom';
+import { productsContext } from '../../contextApi/ProductsContext';
+const SearchInput = ({isSearching, setIsSearching}) => {
     const [searchTerm, setSearchTerm] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    // const [searchResults, setSearchResults] = useState([]);
+
+    const {products, setProducts} = productsContext();
 
     const baseApi = useBaseApi();
+    // const[isSearching, setIsSearching]= useState(false);
 
+    const navigate = useNavigate();
   
 
   async function fetchingProducts() {
-    if (searchTerm?.trim() === "") {
+    if (searchTerm?.trim() === "")
+     {
       // If the search query is empty, clear the results and return
-      setSearchResults([]);
+      setProducts([]);
       return;
      }
+
+
     setLoading(true);
     setError("");
     try 
@@ -28,15 +37,16 @@ const SearchInput = () => {
         {
             headers: {
                 projectID: "4stjj1sb1x5a",
-            },
+            }
         }
         );
         const result = await response.json();
-        // console.log("response", result.data);
+        console.log("response", result.data);
 
-        setSearchResults(result.data);
+        setProducts(result.data);
         setLoading(false);
     }
+  
     catch (e)
     {
         setError("Error fetching data. Please try again.");
@@ -44,7 +54,7 @@ const SearchInput = () => {
     }
   }
 
-
+  console.log(products, "products")
   useEffect(() => {
     fetchingProducts();
   }, [searchTerm]);
@@ -53,6 +63,7 @@ const SearchInput = () => {
     function handleSearch(e) {
         const value = e.target.value;
         setSearchTerm(value);
+        setIsSearching(true)
       }
   return (
     <div className="navbar-search-section">
@@ -63,14 +74,7 @@ const SearchInput = () => {
           value={searchTerm} 
           onChange={handleSearch} 
         />
-          {loading ? (
-                <p>Loading...</p>
-            ) : (
-                <ul>
-                    <ProductCard data={searchResults} />
-                </ul>
-            )}
-            {error && <p>{error}</p>}
+         
     </div>
   )
 }

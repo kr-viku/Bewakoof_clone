@@ -6,11 +6,11 @@ const BaseDomainContext = ({children}) => {
   
   const value ='https://academics.newtonschool.co/'
   return (
-    <div>
+    <>
      <BaseContext.Provider value={value}>
         {children}
      </BaseContext.Provider>
-    </div>
+    </>
   )
 }
 

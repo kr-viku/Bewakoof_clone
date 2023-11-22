@@ -15,6 +15,18 @@ const featuredProducts = {
     'Last Sizes Left': './src/assets/images/lastsizeleft.png'
   }
 
+//   const featuredProducts = [
+//     {'New Arrivals': './src/assets/images/newarrivals.png'},
+//     {'Bestsellers': './src/assets/images/bestsellers.png'},
+//     {'Winterwear': './src/assets/images/winterwear.png'},
+//     {'Official Collaborations': './src/assets/images/officialcollaborations.png'},
+//     {'Customization': './src/assets/images/customization.png'},
+//     {'Combos': './src/assets/images/combos.gif'},
+//     {'Coupon Offers': './src/assets/images/couponoffers.png'},
+//     {'Vote for Designs': './src/assets/images/vote.png'},
+//     {'Plus Size': './src/assets/images/plussize.png'},
+//     {'Last Sizes Left': './src/assets/images/lastsizeleft.png'}
+// ]
   
 
 const FeaturedProducts = () => {

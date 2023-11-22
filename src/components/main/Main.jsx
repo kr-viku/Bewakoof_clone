@@ -2,10 +2,10 @@ import React from 'react'
 import Routers from '../../routes/Routers'
 import './Main.css'
 import Header from '../header/Header'
-const Main = () => {
+const Main = ({isSearching, setIsSearching}) => {
   return (
     <div className='main'>
-    <Routers/>
+    <Routers isSearching={isSearching} setIsSearching= {setIsSearching}/>
     </div>
   )
 }
