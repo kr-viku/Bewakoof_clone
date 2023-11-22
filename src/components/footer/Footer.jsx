@@ -29,10 +29,10 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="">Track Order</Link>
-                </li>{' '}
+                </li>
                 <li>
                   <Link to="">Return Order</Link>
-                </li>{' '}
+                </li>
                 <li>
                   <Link to="">Cancel Order</Link>
                 </li>
@@ -46,10 +46,10 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="">We are Hiring</Link>
-                </li>{' '}
+                </li>
                 <li>
                   <Link to="">Terms & Conditions</Link>
-                </li>{' '}
+                </li>
                 <li>
                   <Link to="">Privacy Policy</Link>
                 </li>
@@ -68,19 +68,19 @@ const Footer = () => {
                   <Link to="">
                     <InstagramIcon />
                     <span>10.7M People Like this</span>
-                  </Link>{' '}
-                </li>{' '}
+                  </Link>
+                </li>
                 <li>
                   <Link to="">
                     <TwitterIcon />
                     <span>5.7M People Like this</span>
-                  </Link>{' '}
-                </li>{' '}
+                  </Link>
+                </li>
                 <li>
                   <Link to="">
                     <PinterestIcon />
                     <span>2.7M People Like this</span>
-                  </Link>{' '}
+                  </Link>
                 </li>
               </ul>
             </Col>
@@ -124,13 +124,13 @@ const Footer = () => {
               <div className="download-app">
                 <Link to="/">
                   <Image
-                    src={"../assets/images/appIosStore.webp"}
+                    src= "../../assets/images/appIosStore.webp"
                     fluid
                   />
                 </Link>
                 <Link to="/">
                   <Image
-                    src={"../assets/images/appAndroidStore.webp"}
+                    src="../../assets/images/appAndroidStore.webp"
                     fluid
                   />
                 </Link>
@@ -139,7 +139,7 @@ const Footer = () => {
             <Col sm={4} md={3} className="menu-section">
               <span className="footer-title">100% SECURE PAYMENT</span>
               <Image
-                src={"../../assets/images/appAndroidStore.webp"}
+                src="../../assets/images/appAndroidStore.webp"
                 fluid
               />
             </Col>

@@ -4,6 +4,7 @@ import Men from "../components/pages/Men";
 import Women from "../components/pages/Women";
 import MobileCover from "../components/pages/MobileCover";
 import Home from "../components/home/Home";
+import Login from "../components/pages/AuthPages/Login";
 
 const Routers = ({isSearching, setIsSearching}) => {
   return (
@@ -12,6 +13,7 @@ const Routers = ({isSearching, setIsSearching}) => {
       <Route path="/Men" element={<Men />} />
       <Route path="/Women" element={<Women />} />
       <Route path="/MobileCovers" element={<MobileCover />} />
+      <Route path="/Login" element={<Login />} />
     </Routes>
   );
 };

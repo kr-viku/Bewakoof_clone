@@ -6,21 +6,22 @@ import ProductCard from '../../productcard/ProductCard';
 import { useNavigate } from 'react-router-dom';
 import { productsContext } from '../../contextApi/ProductsContext';
 const SearchInput = ({isSearching, setIsSearching}) => {
-    const [searchTerm, setSearchTerm] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     // const [searchResults, setSearchResults] = useState([]);
 
     const {products, setProducts} = productsContext();
 
+    // console.log(setProducts, "setproducts");
+
     const baseApi = useBaseApi();
+
     // const[isSearching, setIsSearching]= useState(false);
 
-    const navigate = useNavigate();
-  
-
   async function fetchingProducts() {
-    if (searchTerm?.trim() === "")
+   
+    if (searchTerm?.trim() ==="")
      {
       // If the search query is empty, clear the results and return
       setProducts([]);
@@ -32,6 +33,7 @@ const SearchInput = ({isSearching, setIsSearching}) => {
     setError("");
     try 
     {
+     
       const response = await fetch(
         `${baseApi}api/v1/ecommerce/clothes/products?search={"name":"${searchTerm}", "description":"${searchTerm}"}`,
         {
@@ -40,21 +42,26 @@ const SearchInput = ({isSearching, setIsSearching}) => {
             }
         }
         );
+        
         const result = await response.json();
-        console.log("response", result.data);
+        // console.log("response", result.data);
 
-        setProducts(result.data);
+       setProducts(result.data);
+
+      //  console.log("response", result.data);
+        // console.log('products', products);
         setLoading(false);
-    }
-  
-    catch (e)
-    {
+       
+      }
+      catch (e)
+      {
+        
         setError("Error fetching data. Please try again.");
         setLoading(false);
-    }
+      }
   }
 
-  console.log(products, "products")
+  // console.log(products, "products")
   useEffect(() => {
     fetchingProducts();
   }, [searchTerm]);

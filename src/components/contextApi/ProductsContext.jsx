@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const StoreProductContext = createContext({});
 
@@ -7,9 +7,9 @@ const ProductsContext = ({children}) => {
     const[products, setProducts]= useState([]);
   return (
    <>
-   <ProductsContext.Provider value={{products, setProducts}}>
+   <StoreProductContext.Provider value={{products, setProducts}}>
      {children}
-   </ProductsContext.Provider>
+   </StoreProductContext.Provider>
    </>
   )
 }
