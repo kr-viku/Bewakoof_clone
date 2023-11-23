@@ -1,8 +1,13 @@
 import React from 'react'
 import './Card.css'
 import { Image } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({product}) => {
+    const navigate= useNavigate();
+    const handleImageClick=()=>{
+        
+    }
     console.log(product);
   return (
     <div className='card-container'>
@@ -11,6 +16,7 @@ const Card = ({product}) => {
         src={product.displayImage}
         title={product.name}
         fluid
+        onClick={handleImageClick}
         />
        </div>
        <div className="product-card-detail">

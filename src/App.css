@@ -3,20 +3,34 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&family=Poppins:wght@400;600&family=Vollkorn:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Poppins:wght@400;600&family=Vollkorn:ital@1&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800;900&family=Poppins:wght@400;600&family=Vollkorn:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800;900&family=Poppins:wght@400;600&family=Vollkorn:ital@1&display=swap");
 
-*{
+body {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
 }
-.header-container{
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.header-container {
   height: 5vh;
+ display: flex;
+ width: 100%;
 }
-.main{
-  height: calc(100vh-18vh);
+.home-container {
+  height: calc(100vh - 5vh);
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  width: 100%;
 }
-.footer-container{
-  /* height: 13vh; */
+.footer-container {
+  display: flex;
+  width: 100%;
+  height: 20vh;
 }

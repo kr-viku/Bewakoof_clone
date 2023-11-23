@@ -24,6 +24,7 @@ const SearchInput = ({isSearching, setIsSearching}) => {
     if (searchTerm?.trim() ==="")
      {
       // If the search query is empty, clear the results and return
+      setIsSearching(false);
       setProducts([]);
       return;
      }
