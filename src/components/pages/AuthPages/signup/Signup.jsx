@@ -25,26 +25,38 @@ const Signup = () => {
         [e.target.name] : e.target.value
       })
     }
-    console.log(sigupData);
+    // console.log(sigupData);
 
     const handleLoginSubmit = async (e) => {
       e.preventDefault();
   
       try {
        const response= await axios
-          .post(`${baseURL}/api/v1/user/signup`, {
-            headers: {
-              projectID: "4stjj1sb1x5a"
-            },
-            body: JSON.stringify({
+          .post(`${baseURL}/api/v1/user/signup`,
+            {
               "name": sigupData.name,
               "email": sigupData.email,
               "password": sigupData.password,
               "appType": "ecommerce",
-            }),
-          })
+            },
+            {
+              headers: {
+                projectID: "4stjj1sb1x5a"
+              },
+            }
+          )
           // .then((response) => console.log(response));
           console.log(response);
+
+      if(response.status === 201)
+      {
+        const accessToken = response.data.token;
+        // console.log(accessToken);
+        localStorage.setItem('accessToken', JSON.stringify(accessToken));
+        navigate('/');
+      }
+
+
       } catch (e) {
         console.log("error occured in login", e);
       }

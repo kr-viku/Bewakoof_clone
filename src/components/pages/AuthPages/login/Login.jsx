@@ -20,19 +20,32 @@ const Login = () => {
     e.preventDefault();
 
     try {
-     const response= await axios
-        .post(`${baseURL}/api/v1/user/login`, {
+      const response = await axios.post(
+        `${baseURL}/api/v1/user/login`,
+
+        {
+          email: loginData.email,
+          password: loginData.password,
+          appType: "ecommerce",
+        },
+        {
           headers: {
             projectID: "4stjj1sb1x5a",
-          },
-          body: {
-            email: loginData.email,
-            password: loginData.password,
-            appType: "ecommerce",
-          },
-        })
-        // .then((response) => console.log(response));
-        console.log(response);
+          }
+        }
+      );
+      // .then((response) => console.log(response));
+      console.log(response);
+
+      if(response.status === 200)
+      {
+        const accessToken = response.data.token;
+        // console.log(accessToken);
+        localStorage.setItem('accessToken', JSON.stringify(accessToken));
+        navigate('/');
+      }
+
+
     } catch (e) {
       console.log("error occured in login", e);
     }

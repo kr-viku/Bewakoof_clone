@@ -4,6 +4,8 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import ImageAndWlc from "../ImageAndWlc";
 import Title from "../Title";
 import {useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useBaseApi } from '../../../contextApi/BaseDomainContext';
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
@@ -13,6 +15,32 @@ const ForgetPassword = () => {
       password:''
     })
 
+    const baseURL = useBaseApi();
+
+    const handleForgetPassword = async (e) => {
+      e.preventDefault();
+  
+      try {
+       const response= await axios
+          .post(`${baseURL}/api/v1/user/forgotPassword`,
+            {
+              "name": forgetPasswordData.name,
+              "email": forgetPasswordData.email,
+              "password": forgetPasswordData.password,
+              "appType": "ecommerce",
+            },
+            {
+              headers: {
+                projectID: "4stjj1sb1x5a"
+              },
+            }
+          )
+          // .then((response) => console.log(response));
+          console.log(response);
+      } catch (e) {
+        console.log("error occured in login", e);
+      }
+    };
 
 
 
@@ -34,7 +62,7 @@ const ForgetPassword = () => {
             <Col>
               <div className="login-section">
                 <Title title="Reset Password" />
-                <Form>
+                <Form onSubmit={handleForgetPassword}>
                 <Form.Group controlId="validEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
