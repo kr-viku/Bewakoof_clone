@@ -36,7 +36,7 @@ const SearchInput = ({isSearching, setIsSearching}) => {
     {
      
       const response = await fetch(
-        `${baseApi}api/v1/ecommerce/clothes/products?search={"name":"${searchTerm}", "description":"${searchTerm}"}`,
+        `${baseApi}/api/v1/ecommerce/clothes/products?search={"name":"${searchTerm}", "description":"${searchTerm}"}`,
         {
             headers: {
                 projectID: "4stjj1sb1x5a",

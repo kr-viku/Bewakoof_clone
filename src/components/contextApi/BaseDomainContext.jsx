@@ -4,7 +4,7 @@ const BaseContext = createContext('')
 const BaseDomainContext = ({children}) => {
 
   
-  const value ='https://academics.newtonschool.co/'
+  const value ='https://academics.newtonschool.co'
   return (
     <>
      <BaseContext.Provider value={value}>

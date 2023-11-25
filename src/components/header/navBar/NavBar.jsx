@@ -59,7 +59,7 @@ const NavBar = ({isSearching, setIsSearching}) => {
         <Link to="/Login" className="item">
           Login
         </Link>
-        <Link to="/favourites" className="item">
+        <Link to="/wishlist" className="item">
           <FavoriteBorderIcon />
         </Link>
         <Link to="/cart" className="item">

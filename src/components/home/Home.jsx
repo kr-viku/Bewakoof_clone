@@ -19,7 +19,7 @@ const Home = ({ isSearching, setIsSearching }) => {
       ) : (
         <ProductCard products={products} />
       )}
-      <Footer/>
+    
     </div>
   );
 };

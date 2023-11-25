@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ForgetPassword.css'
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import ImageAndWlc from "../ImageAndWlc";
@@ -7,6 +7,23 @@ import {useNavigate } from 'react-router-dom';
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
+    const[forgetPasswordData, setForgetPasswordData]= useState({
+      name:'',
+      email:'',
+      password:''
+    })
+
+
+
+
+    const handleChange= (e)=>{
+      // console.log(e.target.value);
+      setForgetPasswordData({
+        ...forgetPasswordData,
+        [e.target.name] : e.target.value
+      })
+    }
+    console.log(forgetPasswordData);
     return (
       <div className="forgetPassword-wrapper">
         <Container fluid>
@@ -23,7 +40,7 @@ const ForgetPassword = () => {
                     <Form.Control
                       required
                       type="text"
-                      // onChange={handleChange}
+                      onChange={handleChange}
                       placeholder="Name"
                       name="name"
                     />
@@ -33,7 +50,7 @@ const ForgetPassword = () => {
                     <Form.Control
                       required
                       type="email"
-                      // onChange={handleChange}
+                      onChange={handleChange}
                       placeholder="Email"
                       name="email"
                     />
@@ -45,7 +62,7 @@ const ForgetPassword = () => {
                       required
                       type="password"
                       placeholder="Password"
-                      // onChange={handleChange}
+                      onChange={handleChange}
                       name="password"
                     />
                   </Form.Group>
