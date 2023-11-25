@@ -1,4 +1,41 @@
-.cart-wrapper{
+.empty-cart-wrapper{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+.empty-list-title{
+    font-size: 15px;
+    font-weight: 550;
+    margin: 20px;
+}
+.empty-list-subtitle{
+    color: #8f98a9;
+    font-size: 18px!important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px!important;
+    margin: 8px auto auto;
+    text-align: center;
+    width: 20%;
+    letter-spacing: 0.5px;
+}
+.btn{
+    width: 20%;
+    height: 48px;
+    margin: 25px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    letter-spacing: 0.5px;
+    background-color: #42a2a2;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 550;
+}
+.btn:hover {
+    background-color: #5cb4b4;
+    cursor: pointer;
 }
