@@ -39,3 +39,45 @@
     background-color: #5cb4b4;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1200px)
+{
+    .btn{
+        font-size: 14px;
+        width: 12%;
+    }
+    .empty-wishlist-subtitle{
+        width: 25%;
+    }
+}
+@media only screen and (max-width: 990px)
+{
+    .btn{
+        font-size: 12px;
+        width: 15%;
+    }
+    .empty-wishlist-subtitle{
+        width: 28%;
+        font-size: 12px !important;
+    }
+}
+@media only screen and (max-width: 680px)
+{
+    .btn{
+        font-size: 12px;
+        width: 25%;
+    }
+    .empty-wishlist-subtitle{
+        width: 38%;
+    }
+}
+@media only screen and (max-width: 450px)
+{
+    .btn{
+        font-size: 12px;
+        width: 50%;
+    }
+    .empty-wishlist-subtitle{
+        width: 45%;
+    }
+}
