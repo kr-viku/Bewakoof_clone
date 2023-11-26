@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './SingleProductCard.css'
 
 const BreadCumBox = ({productDetails}) => {
-    console.log(productDetails.gender );
+    // console.log(productDetails);
     const tabs =[
         { text: 'Home', link: '/' },
         { text: productDetails?.gender, link: '/' },
@@ -13,7 +13,7 @@ const BreadCumBox = ({productDetails}) => {
     <div className='breadcumbox-wrapper'>
        <ul>
         {tabs.map((tab, index) => (
-            <li key={index}>
+            <li key={index} className='breadcum-item'>
               <Link to={tab.link}>{tab.text}</Link>
             </li>
         ))}
