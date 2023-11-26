@@ -9,6 +9,7 @@ import Signup from "../components/pages/AuthPages/signup/Signup";
 import ForgetPassword from "../components/pages/AuthPages/forget-password/ForgetPassword";
 import Cart from "../components/pages/privatePages/cart/Cart";
 import Wishlist from "../components/pages/privatePages/wishlist/Wishlist";
+import SingleProductCard from "../components/pages/publicPages/SingleProductCard";
 
 const Routers = ({isSearching, setIsSearching}) => {
   return (
@@ -22,6 +23,7 @@ const Routers = ({isSearching, setIsSearching}) => {
       <Route path="/ForgetPassword" element={<ForgetPassword />} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/wishlist" element={<Wishlist/>} />
+      <Route path="/product/:id" element={<SingleProductCard/>} />
     </Routes>
   );
 };

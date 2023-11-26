@@ -7,31 +7,31 @@ const BottomNavbar = () => {
     <div className='bottom-navbar'>
         <ul className='bottom-navbar-list'>
             <li>
-                <Link to='/Livenow' className='item'>LIVE NOW</Link>
+                <Link to='/' className='item'>LIVE NOW</Link>
             </li>
             <li>
-                <Link to='/Winterwear' className='item'>WINTERWEAR</Link>
+                <Link to='/' className='item'>WINTERWEAR</Link>
             </li>
             <li>
-                <Link to='/Men' className='item'>MEN</Link>
+                <Link to='/' className='item'>MEN</Link>
             </li>
             <li>
-                <Link to='/Women' className='item'>WOMEN</Link>
+                <Link to='/' className='item'>WOMEN</Link>
             </li>
             <li>
-                <Link to='/Accessories' className='item'>ACCESSORIES</Link>
+                <Link to='/' className='item'>ACCESSORIES</Link>
             </li>
             <li>
-                <Link to='/Heavyduty' className='item'>HEAVY DUTY</Link>
+                <Link to='/' className='item'>HEAVY DUTY</Link>
             </li>
             <li>
-                <Link to='/Bewakoofair' className='item'>BEWAKOOF AIR</Link>
+                <Link to='/' className='item'>BEWAKOOF AIR</Link>
             </li>
             <li>
-                <Link to='/Officialmerch' className='item'>OFFICIAL MERCH</Link>
+                <Link to='/' className='item'>OFFICIAL MERCH</Link>
             </li>
             <li>
-                <Link to='/Plussize' className='item'>PLUS SIZE</Link>
+                <Link to='/' className='item'>PLUS SIZE</Link>
             </li>
         </ul>
     </div>

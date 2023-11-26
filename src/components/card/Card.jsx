@@ -4,9 +4,11 @@ import { Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Card = ({product}) => {
+    console.log(product);
+
     const navigate= useNavigate();
     const handleImageClick=()=>{
-        
+         navigate(`/product/${product._id}`)
     }
     console.log(product);
   return (
