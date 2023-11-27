@@ -14,3 +14,8 @@
     text-decoration: none;
     color: #73739C;
 }
+
+.details-wrapper{
+    background-color: yellow;
+    width: 50%;
+} 

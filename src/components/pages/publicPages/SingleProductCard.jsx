@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useBaseApi } from '../../contextApi/BaseDomainContext';
 import BreadCumBox from './singleProductCard/BreadCumBox';
+import ProductInfo from './singleProductCard/ProductInfo';
 
 const SingleProductCard = () => {
     const {id} = useParams();
@@ -38,6 +39,7 @@ const SingleProductCard = () => {
   return (
     <div className='signleproduct-wrapper'>
         <BreadCumBox productDetails={productDetails}/>
+        <ProductInfo productDetails={productDetails}/>
     </div>
   )
 }
