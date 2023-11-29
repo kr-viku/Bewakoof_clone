@@ -7,6 +7,9 @@ import "./SingleProductCard.css";
 
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import SwapHorizontalCircleOutlinedIcon from '@mui/icons-material/SwapHorizontalCircleOutlined';
 
 const ProductInfo = ({ productDetails }) => {
   console.log(productDetails);
@@ -36,8 +39,8 @@ const ProductInfo = ({ productDetails }) => {
   return (
     <div className="productinfo-wrapper">
       <Row>
-        <Col md={6} sm={12}>
-          <div className="product-gallery">
+        <Col md={6} sm={12} className="product-gallery">
+          <div>
             <ImageGallery
               items={images}
               thumbnailPosition="left"
@@ -61,8 +64,7 @@ const ProductInfo = ({ productDetails }) => {
               <p className="actual-price">₹1299</p>
               <h4 className="offer-percentage">65% OFF</h4>
             </div>
-            <div className="inclusive-tax-text">inclusive of all taxes
-            </div>
+            <div className="inclusive-tax-text">inclusive of all taxes</div>
             <div className="tags">
               <p className="tag-offer">BUY 3 FOR 999</p>
               <p className="tag-fabric">100% COTTON</p>
@@ -70,10 +72,11 @@ const ProductInfo = ({ productDetails }) => {
             <div className="tribe-text">
               TriBe members get an extra discount of ₹30 and FREE shipping.
             </div>
-            <div>
-              <h3>COLOUR OPTIONS: {productDetails?.color}</h3>
+            <div className="colour-options-text">
+              <h5>COLOUR OPTIONS:</h5>&nbsp;&nbsp;&nbsp;
+              <span>{productDetails?.color}</span>
             </div>
-            <div>
+            <div className="colour-container">
               {colorShades.map((box, i) => {
                 return (
                   <div className="multi-color-block" key={i}>
@@ -83,46 +86,63 @@ const ProductInfo = ({ productDetails }) => {
               })}
             </div>
             <div>
+              <h2 className="select-size-title">Select Size</h2>
+            </div>
+            <div className="size-container">
               {productDetails?.size.map((item, i) => {
-                return <div id={i}>{item}</div>;
+                return (
+                  <div key={i} className="size-item">
+                    {item}
+                  </div>
+                );
               })}
             </div>
-            <div>
-              <Button>
-                <LocalMallOutlinedIcon />
+            <div className="button-wrapper">
+              <Button className="add-to-bag">
+                <LocalMallOutlinedIcon className="bag-icon" />
                 <span>ADD TO BAG</span>
               </Button>
-              <Button>
-                <FavoriteBorderOutlinedIcon />
+              <Button className="add-to-wishlist">
+                <FavoriteBorderOutlinedIcon className="heart-icon" />
                 <span>WISHLIST</span>
               </Button>
             </div>
             <div>
               <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header>Accordion Item #1</Accordion.Header>
-                  <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </Accordion.Body>
+                  <Accordion.Header className="accordion-title">
+                    <StarOutlineIcon className="accordion-icon" />
+                    <div className="accordion-subtitle">
+                      <p>Offers</p>
+                      <p>SAVE EXTRA WITH 0 OFFERS</p>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body></Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
-                  <Accordion.Header>Accordion Item #2</Accordion.Header>
-                  <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                  <Accordion.Header className="accordion-title">
+                    <ArticleOutlinedIcon className="accordion-icon"/>
+                    <div className="accordion-subtitle">
+                      <p>Product Description</p>
+                      <p>Manufacture, Care and Fit</p>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="accordion-body">
+                    {
+                      productDetails?.description
+                    }
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header className="accordion-title">
+                    <SwapHorizontalCircleOutlinedIcon className="accordion-icon"/>
+                    <div className="accordion-subtitle">
+                      <p>15 Days Returns & Exchange</p>
+                      <p>Know about return & exchange policy</p>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="accordion-body">
+                  Easy returns upto 15 days of delivery. Exchange available on select pincodes
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
