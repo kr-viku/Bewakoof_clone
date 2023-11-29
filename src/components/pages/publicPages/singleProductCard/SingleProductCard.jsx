@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useBaseApi } from '../../../contextApi/BaseDomainContext';
 import BreadCumBox from './BreadCumBox';
 import ProductInfo from './ProductInfo';
+import Reviews from './Reviews';
 
 const SingleProductCard = () => {
     const {id} = useParams();
@@ -40,6 +41,7 @@ const SingleProductCard = () => {
     <div className='signleproduct-wrapper'>
         <BreadCumBox productDetails={productDetails}/>
         <ProductInfo productDetails={productDetails}/>
+        <Reviews/>
     </div>
   )
 }
