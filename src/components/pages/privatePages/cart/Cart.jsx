@@ -5,13 +5,11 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const navigate = useNavigate();
 
-  const accessToken = localStorage.getItem("accessToken");
+  
 
   // console.log(accessToken);
 
-  if (accessToken === null) {
-    return navigate("/login");
-  } else {
+  
     const cartItems = 0;
     if (cartItems !== 0) {
       return <h2>cartItems present</h2>;
@@ -34,7 +32,6 @@ const Cart = () => {
         </div>
       );
     }
-  }
 };
 
 export default Cart;

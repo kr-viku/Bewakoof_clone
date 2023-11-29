@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useBaseApi } from '../../contextApi/BaseDomainContext';
-import BreadCumBox from './singleProductCard/BreadCumBox';
-import ProductInfo from './singleProductCard/ProductInfo';
+import { useBaseApi } from '../../../contextApi/BaseDomainContext';
+import BreadCumBox from './BreadCumBox';
+import ProductInfo from './ProductInfo';
 
 const SingleProductCard = () => {
     const {id} = useParams();

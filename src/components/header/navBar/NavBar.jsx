@@ -8,12 +8,10 @@ import SideBar from "../sideBar/SideBar";
 import { useBaseApi } from "../../contextApi/BaseDomainContext";
 import SearchInput from "./SearchInput";
 
-
-const NavBar = ({isSearching, setIsSearching}) => {
+const NavBar = ({ isSearching, setIsSearching }) => {
   const [showMenu, setShowMenu] = useState(false);
- 
+  const accessToken = localStorage.getItem("accessToken");
 
-  
   const handleMenuBarClick = () => {
     setShowMenu(!showMenu);
     // console.log('clicked');
@@ -53,16 +51,18 @@ const NavBar = ({isSearching, setIsSearching}) => {
         </Link>
       </div>
 
-      
       <div className="navbar-login-fav-cart-country">
-      <SearchInput isSearching={isSearching} setIsSearching= {setIsSearching}/>
+        <SearchInput
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
+        />
         <Link to="/Login" className="item">
           Login
         </Link>
         <Link to="/wishlist" className="item">
           <FavoriteBorderIcon />
         </Link>
-        <Link to="/cart" className="item">
+        <Link to={accessToken === null ? "/login" : "/cart"} className="item">
           <ShoppingBagOutlinedIcon />
         </Link>
       </div>
@@ -72,4 +72,3 @@ const NavBar = ({isSearching, setIsSearching}) => {
 };
 
 export default NavBar;
-

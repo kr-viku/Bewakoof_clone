@@ -16,6 +16,94 @@
 }
 
 .details-wrapper{
-    background-color: yellow;
+    background-color: pink;
     width: 50%;
-} 
+    display: flex;
+    flex-direction: column;
+}
+.brand-name{
+    font-size: 18px;
+  line-height: 21px;
+  color: #4f5362;
+  font-weight: 550;
+}
+.product-name{
+    font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 16px;
+  line-height: 25px;
+  color: #737373;
+}
+.ratings{
+    height: 22px;
+    width: fit-content;
+    padding: 0 3px;
+    font-size: 14px;
+    background-color: #F7F7F7;
+    border: 1px solid black;
+}
+.price-section{
+    display: flex;
+    justify-content:flex-start;
+    gap: 10px;
+    align-items: center;
+}
+.selling-price {
+    font-size: 24px;
+    color: #0f0f0f;
+    line-height: 24px;
+    font-weight: 550;
+  }
+  .selling-price span {
+    font-size: 16px;
+    line-height: 18px;
+  }
+.selling-price h3{
+    display: inline-block;
+}
+
+.actual-price{
+    text-decoration: line-through;
+    color: #949494;
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+.offer-percentage{
+    font-size: 16px;
+    line-height: 19px;
+    color: #00b852;
+}
+.inclusive-tax-text{
+    width: max-content;
+    color: #949494;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: -10px;
+}
+.tags{
+    display: flex;
+    gap: 30px;
+    font-size: 13px;
+    line-height: 18px;
+    align-items: center;
+}
+.tag-offer{
+    background-color: rgba(0, 184, 82, 0.8);
+    color: rgb(255, 255, 255);
+    border: none;
+    margin: 8px 16px 8px 0px;
+    padding: 4px 8px;
+}
+.tag-fabric{
+    background-color: white;
+    color: rgb(115, 115, 115);
+    border: 1px solid rgb(115, 115, 115);
+    padding: 3px 5px;
+}
+.tribe-text{
+    
+}
+.multi-color-block div{
+    height: 100px;
+    width: 100px;
+}

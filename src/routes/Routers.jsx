@@ -9,7 +9,7 @@ import Signup from "../components/pages/AuthPages/signup/Signup";
 import ForgetPassword from "../components/pages/AuthPages/forget-password/ForgetPassword";
 import Cart from "../components/pages/privatePages/cart/Cart";
 import Wishlist from "../components/pages/privatePages/wishlist/Wishlist";
-import SingleProductCard from "../components/pages/publicPages/SingleProductCard";
+import SingleProductCard from "../components/pages/publicPages/singleProductCard/SingleProductCard";
 
 const Routers = ({isSearching, setIsSearching}) => {
   return (
