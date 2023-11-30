@@ -41,7 +41,7 @@ const SingleProductCard = () => {
     <div className='signleproduct-wrapper'>
         <BreadCumBox productDetails={productDetails}/>
         <ProductInfo productDetails={productDetails}/>
-        <Reviews/>
+        <Reviews productId={id}/>
     </div>
   )
 }

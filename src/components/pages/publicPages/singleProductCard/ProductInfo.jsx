@@ -12,7 +12,7 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SwapHorizontalCircleOutlinedIcon from '@mui/icons-material/SwapHorizontalCircleOutlined';
 
 const ProductInfo = ({ productDetails }) => {
-  console.log(productDetails);
+  // console.log(productDetails);
   const images = [
     {
       original: productDetails?.displayImage,
