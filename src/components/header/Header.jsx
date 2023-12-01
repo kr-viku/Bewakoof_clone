@@ -6,7 +6,7 @@ const Header = ({ isSearching, setIsSearching }) => {
   return (
     <div className="header-wrapper">
         <TopBar />
-        {/* <NavBar isSearching={isSearching} setIsSearching={setIsSearching} /> */}
+        <NavBar isSearching={isSearching} setIsSearching={setIsSearching} />
     
     </div>
   );
