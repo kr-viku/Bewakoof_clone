@@ -5,7 +5,7 @@ import FeaturedProducts from "./featuredProducts/FeaturedProducts";
 import ProductCard from "../productcard/ProductCard";
 import { productsContext } from "../contextApi/ProductsContext";
 import Footer from "../footer/Footer";
-
+import './Home.css'
 const Home = ({ isSearching, setIsSearching }) => {
   const { products, setProducts } = productsContext();
   return (
@@ -19,7 +19,7 @@ const Home = ({ isSearching, setIsSearching }) => {
       ) : (
         <ProductCard products={products} />
       )}
-    
+    {/* <Footer/> */}
     </div>
   );
 };

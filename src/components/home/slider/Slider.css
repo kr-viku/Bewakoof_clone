@@ -1,52 +1,9 @@
-#slider-container{
-    position: absolute;
-    top: 10%;
-    width: 90vw;
+.slider-container{
+    width: 100%;
+    height: 100%;
 }
 .slider-images{
-    width: 90% !important;
-    height: 70vh;
+    width: 95%;
     margin: 2px;
-    /* border: 20px solid white; */
     cursor: pointer;
-}
-.alice-carousel__wrapper
-{
-    
-    position: absolute;
-    top: 5%;
-}
-@media only screen and (max-width: 1200px)
-{
-    .slider-images{
-        height: 55vh;
-        /* border: 1vh solid white; */
-    }
-}
-@media only screen and (max-width: 990px)
-{
-    .slider-images{
-        height: 50vh;
-    }
-    .alice-carousel__stage-item __active{
-        width: 20%;
-    }
-}
-@media only screen and (max-width: 780px)
-{
-    .slider-images{
-        height: 40vh;
-    }
-    .alice-carousel__stage-item __active{
-        width: 282px;
-    }
-}
-@media only screen and (max-width: 600px)
-{
-    .slider-images{
-        height: 30vh;
-    }
-    /* .alice-carousel__stage-item{
-        width: 200px;
-    } */
 }

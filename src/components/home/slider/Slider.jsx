@@ -71,7 +71,7 @@ const Slider = () => {
     },
   ];
   return (
-    <div>
+    <div className="slider-container">
       <AliceCarousel
         mouseTracking
         items={items.map((item) => (
