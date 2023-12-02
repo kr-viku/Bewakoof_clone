@@ -10,9 +10,11 @@ import ForgetPassword from "../components/pages/AuthPages/forget-password/Forget
 import Cart from "../components/pages/privatePages/cart/Cart";
 import Wishlist from "../components/pages/privatePages/wishlist/Wishlist";
 import SingleProductCard from "../components/pages/publicPages/singleProductCard/SingleProductCard";
+import Footer from "../components/footer/Footer";
 
 const Routers = ({isSearching, setIsSearching}) => {
   return (
+    <div>
     <Routes>
       <Route path="/" element={<Home isSearching={isSearching} setIsSearching= {setIsSearching} />} />
       <Route path="/Men" element={<Men />} />
@@ -24,7 +26,9 @@ const Routers = ({isSearching, setIsSearching}) => {
       <Route path="/cart" element={<Cart/>} />
       <Route path="/wishlist" element={<Wishlist/>} />
       <Route path="/product/:id" element={<SingleProductCard/>} />
+      
     </Routes>
+    </div>
   );
 };
 

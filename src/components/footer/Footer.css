@@ -1,6 +1,9 @@
-
 .footer-wrapper {
-  width: 98vw;
+  width: 100%;
+  display: flex;
+}
+/* 
+.footer-wrapper {
     font-size: 11px;
     background: #181818;
     padding: 40px 0;
@@ -127,4 +130,4 @@
       text-align: center;
     }
   }
-  
+   */

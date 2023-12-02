@@ -30,22 +30,20 @@ const featuredProducts = {
 
 const FeaturedProducts = () => {
   return (
-    <Container>
-      <div className="featured-slider">
-        <ul>
+    <div className="features-wrapper">
+      <div className="features-container">
+        <ul className="features-list">
           {Object.entries(featuredProducts).map(([key, value]) => (
             <li className="featured-product" key={key}>
               <div className="slider-inner">
-                <div className="slider-image">
-                  <img src={value} alt={key} />
-                </div>
+                <img src={value} alt={key} className="slider-image" />
                 <p>{key}</p>
               </div>
             </li>
           ))}
         </ul>
       </div>
-    </Container>
+    </div>
   );
 };
 

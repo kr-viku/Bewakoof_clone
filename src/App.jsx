@@ -15,7 +15,6 @@ const App = () => {
       <div id="app" className="app-wrapper">
         <Header isSearching={isSearching} setIsSearching= {setIsSearching}/>
         <Routers isSearching={isSearching} setIsSearching= {setIsSearching}/>
-        {/* <Footer/> */}
       </div>
       </ProductsContext>
     </BaseDomainContext>
