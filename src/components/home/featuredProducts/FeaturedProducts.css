@@ -1,7 +1,6 @@
 .featured-slider {
-    margin:11%;
-    margin-top: 30px;
-    margin-bottom: 2%;
+    margin: 30px 15px;
+    width: 100%;
   }
   .featured-slider ul {
     overflow-x: scroll;
@@ -18,14 +17,12 @@
     cursor: pointer;
   }
   .featured-slider .slider-inner .slider-image {
-    height: 20%;
     width: 125px;
   }
   .featured-slider .slider-inner .slider-image img {
     width: 100%;
-    height: 90%;
+    height: 100%;
     border-style: none;
-    display: block;
   }
   
   .featured-slider ul::-webkit-scrollbar {
