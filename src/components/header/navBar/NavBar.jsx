@@ -27,13 +27,13 @@ const NavBar = ({ isSearching, setIsSearching }) => {
               className="logo"
             />
           </Link>
-          <Link to="/Men" className="navbar-item">
+          <Link to="/" className="navbar-item">
             MEN
           </Link>
-          <Link to="/Women" className="navbar-item">
+          <Link to="/" className="navbar-item">
             WOMEN
           </Link>
-          <Link to="/MobileCovers" className="navbar-item">
+          <Link to="/" className="navbar-item">
             MOBILE COVERS
           </Link>
 
