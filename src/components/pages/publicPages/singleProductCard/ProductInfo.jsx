@@ -122,7 +122,7 @@ const ProductInfo = ({ productDetails }) => {
           }
         );
 
-        console.log("response", response);
+        // console.log("response", response);
         alert(response.data.message);
         if (response.status === 200) {
           setWishlisted(true);
@@ -133,9 +133,26 @@ const ProductInfo = ({ productDetails }) => {
     }
   };
 
-  const handleRemoveFromWishlist = async () =>{
+  const handleRemoveFromWishlist = async () => {
+    const response = await axios.delete(
+      `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${productDetails._id}`,
+      {
+        headers: {
+          projectId: "4stjj1sb1x5a",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    )
 
-  }
+    // console.log(response);
+
+    if(response.status === 200)
+    {
+      setWishlisted(false);
+    }
+  };
   return (
     <div className="productinfo-wrapper">
       <Row>
@@ -189,7 +206,7 @@ const ProductInfo = ({ productDetails }) => {
               <h2 className="select-size-title">Select Size</h2>
             </div>
             <div className="size-container">
-              {productDetails?.size.map((item, i) => {
+              {productDetails?.size?.map((item, i) => {
                 return (
                   <div key={i} className="size-item">
                     {item}
@@ -203,15 +220,14 @@ const ProductInfo = ({ productDetails }) => {
                 <span onClick={handleAddItemToCart}>ADD TO BAG</span>
               </Button>
               <Button className="add-to-wishlist">
-
                 {/* checking if the product already exist in the wishlist */}
 
                 {wishlisted ||
                 wishlistItems
-                  ?.map((item) => item.products._id)
-                  .includes(productDetails._id) ? (
+                  ?.map((item) => item.products?._id)
+                  .includes(productDetails?._id) ? (
                   <div>
-                    <FavoriteIcon className="filled-heart-icon"/>
+                    <FavoriteIcon className="filled-heart-icon" />
                     <span onClick={handleRemoveFromWishlist}>WISHLISTED</span>
                   </div>
                 ) : (
