@@ -11,6 +11,7 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SwapHorizontalCircleOutlinedIcon from "@mui/icons-material/SwapHorizontalCircleOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocalMallTwoToneIcon from "@mui/icons-material/LocalMallTwoTone";
 
 import { useBaseApi } from "../../../contextApi/BaseDomainContext";
 import { useNavigate } from "react-router-dom";
@@ -22,9 +23,11 @@ const ProductInfo = ({ productDetails }) => {
   const baseURL = useBaseApi();
   const navigate = useNavigate();
   const [wishlisted, setWishlisted] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
   // const {fetchingWishlistProducts} = wishlistProductsContext();
 
   const [wishlistItems, setWishlistItems] = useState(null);
+  const [cartItems, setCartItems] = useState(null);
   const accessToken = localStorage.getItem("accessToken");
   const images = [
     {
@@ -68,9 +71,28 @@ const ProductInfo = ({ productDetails }) => {
     } catch (e) {}
   };
 
+  const fetchingCartProducts = async () => {
+    const response = await axios.get(
+      "https://academics.newtonschool.co/api/v1/ecommerce/cart",
+      {
+        headers: {
+          projectId: "4stjj1sb1x5a",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+        },
+      }
+    );
+    // console.log(response.data.data.items);
+    setCartItems(response.data.data.items);
+  };
   useEffect(() => {
     fetchingWishlistProducts();
   }, [wishlisted]);
+
+  useEffect(() => {
+    fetchingCartProducts();
+  }, [addedToCart]);
+
   console.log(wishlistItems);
   // fetchingWishlistProducts();
   const handleAddItemToCart = async () => {
@@ -96,6 +118,9 @@ const ProductInfo = ({ productDetails }) => {
 
         console.log("response", response);
         alert(response.data.message);
+        if (response.status === 200) {
+          setAddedToCart(true);
+        }
       }
     } catch (e) {
       console.log("error while adding to cart", e);
@@ -144,15 +169,15 @@ const ProductInfo = ({ productDetails }) => {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       }
-    )
+    );
 
     // console.log(response);
 
-    if(response.status === 200)
-    {
+    if (response.status === 200) {
       setWishlisted(false);
     }
   };
+  console.log('cartItems', cartItems);
   return (
     <div className="productinfo-wrapper">
       <Row>
@@ -216,14 +241,23 @@ const ProductInfo = ({ productDetails }) => {
             </div>
             <div className="button-wrapper">
               <Button className="add-to-bag">
-                <LocalMallOutlinedIcon className="bag-icon" />
-                <span onClick={handleAddItemToCart}>ADD TO BAG</span>
+                {cartItems
+                  ?.map((item) => item.product?._id)
+                  .includes(productDetails?._id) ? (
+                  <div>
+                    <LocalMallTwoToneIcon />
+                    <span onClick={()=>{navigate('/cart')}}>GO TO BAG</span>
+                  </div>
+                ) : (
+                  <div>
+                    <LocalMallOutlinedIcon className="bag-icon" />
+                    <span onClick={handleAddItemToCart}>ADD TO BAG</span>
+                  </div>
+                )}
               </Button>
               <Button className="add-to-wishlist">
                 {/* checking if the product already exist in the wishlist */}
-
-                {wishlisted ||
-                wishlistItems
+                {wishlistItems
                   ?.map((item) => item.products?._id)
                   .includes(productDetails?._id) ? (
                   <div>
