@@ -24,29 +24,30 @@ const Reviews = ({ productId }) => {
     }
   };
 
-  console.log(reviews);
+  // console.log(reviews);
   useEffect(() => {
     fetchReview();
   }, []);
   return (
-    <div>
-      <h4>Reviews</h4>
+    <div className="review-wrapper">
+      <div className="review-container">
+      <h4 className="review-title">Reviews</h4>
       {reviews.map((review) => {
         return (
-          <div className="review-wrapper" key={review.id}>
-            <div className="review-container">
+          <div key={review.id} className="review-item">
               <div className="ratings-star">{review.ratings}</div>
-              <div className="review">
+              <div className="review-text">
                 {review.text}
-                <div>
-                Bewakoof Fans
+                <div className="review-username">
+                  Bewakoof Fans
                 </div>
-                <div>2021-06-24</div>
+                <div className="review-date">2021-06-24</div>
               </div>
             </div>
-          </div>
+         
         );
       })}
+       </div>
     </div>
   );
 };

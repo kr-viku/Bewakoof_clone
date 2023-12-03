@@ -58,10 +58,16 @@ const NavBar = ({ isSearching, setIsSearching }) => {
           <Link to="/Login" className="navbar-item">
             Login
           </Link>
-          <Link to="/wishlist" className="navbar-item">
+          <Link
+            to={accessToken === null ? "/login" : "/wishlist"}
+            className="navbar-item"
+          >
             <FavoriteBorderIcon />
           </Link>
-          <Link to={accessToken === null ? "/login" : "/cart"} className="navbar-item">
+          <Link
+            to={accessToken === null ? "/login" : "/cart"}
+            className="navbar-item"
+          >
             <ShoppingBagOutlinedIcon />
           </Link>
         </div>

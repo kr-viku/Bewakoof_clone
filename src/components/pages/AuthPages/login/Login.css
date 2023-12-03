@@ -1,7 +1,7 @@
 .login-container{
-        height: calc(100vh - 78px);
-        margin-top: 1%;
-      
+ /* height: calc(100%-78px); */
+/* margin-top: 1%;/ */
+      width: 100%;
 }
 .welcome-section {
     display: flex;

@@ -13,9 +13,11 @@ const Cart = () => {
     const cartItems = 0;
     if (cartItems !== 0) {
       return <h2>cartItems present</h2>;
-    } else {
+    } 
+    else {
       return (
-        <div className="empty-cart-wrapper">
+        <div className="cart-wrapper">
+        <div className="empty-cart-container">
           <Image
             src="https://images.bewakoof.com/images/doodles/empty-cart-page-doodle.png"
             alt="empty-cart"
@@ -29,6 +31,7 @@ const Cart = () => {
           <Button type="button" onClick={() => navigate("/")}>
             Shop Now
           </Button>
+        </div>
         </div>
       );
     }

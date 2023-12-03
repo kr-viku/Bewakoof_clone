@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Image, Row } from "react-bootstrap";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Accordion from "react-bootstrap/Accordion";
@@ -9,10 +9,21 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import SwapHorizontalCircleOutlinedIcon from '@mui/icons-material/SwapHorizontalCircleOutlined';
+import SwapHorizontalCircleOutlinedIcon from "@mui/icons-material/SwapHorizontalCircleOutlined";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+
+import { useBaseApi } from "../../../contextApi/BaseDomainContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ProductInfo = ({ productDetails }) => {
-  // console.log(productDetails);
+  console.log(productDetails);
+
+  const baseURL = useBaseApi();
+  const navigate = useNavigate();
+  const [wishlisted, setWishlisted] = useState(false);
+  const accessToken = localStorage.getItem("accessToken");
   const images = [
     {
       original: productDetails?.displayImage,
@@ -36,6 +47,68 @@ const ProductInfo = ({ productDetails }) => {
     { color: "orange", colorName: "orange" },
     { color: "gray", colorName: "gray" },
   ];
+
+  const handleAddItemToCart = async () => {
+    try {
+      if (accessToken === null) {
+        navigate("/login");
+      } else {
+        const response = await axios.patch(
+          `https://academics.newtonschool.co/api/v1/ecommerce/cart/${productDetails._id}`,
+          // '{\n    "quantity" : 1 ,\n    "size" : "S"\n}',
+          {
+            quantity: 1,
+            size: "S",
+          },
+          {
+            headers: {
+              projectId: "4stjj1sb1x5a",
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+            },
+          }
+        );
+
+        console.log("response", response);
+        alert(response.data.message);
+      }
+    } catch (e) {
+      console.log("error while adding to cart", e);
+    }
+  };
+
+  const handleAddToWishlist = async () => {
+    try {
+      if (accessToken === null) {
+        navigate("/login");
+      } else {
+        const response = await axios.patch(
+          `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
+          // '{\n    "quantity" : 1 ,\n    "size" : "S"\n}',
+          {
+            productId: productDetails._id,
+          },
+          {
+            headers: {
+              projectId: "4stjj1sb1x5a",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+            },
+          }
+        );
+
+        console.log("response", response);
+        alert(response.data.message);
+        if(response.status === 200)
+        {
+          setWishlisted(true);
+        }
+      }
+    } catch (e) {
+      console.log("error while adding to cart", e);
+    }
+  };
   return (
     <div className="productinfo-wrapper">
       <Row>
@@ -52,7 +125,7 @@ const ProductInfo = ({ productDetails }) => {
           </div>
         </Col>
         <Col md={5} sm={12} className="details-wrapper">
-          <div>
+          <div className="details-container">
             <h3 className="brand-name">{productDetails?.brand}</h3>
             <h3 className="product-name">{productDetails?.name}</h3>
             <div className="ratings">&#11088;{productDetails?.ratings}</div>
@@ -100,14 +173,23 @@ const ProductInfo = ({ productDetails }) => {
             <div className="button-wrapper">
               <Button className="add-to-bag">
                 <LocalMallOutlinedIcon className="bag-icon" />
-                <span>ADD TO BAG</span>
+                <span onClick={handleAddItemToCart}>ADD TO BAG</span>
               </Button>
               <Button className="add-to-wishlist">
-                <FavoriteBorderOutlinedIcon className="heart-icon" />
-                <span>WISHLIST</span>
+                {wishlisted ? (
+                  <div>
+                    <FavoriteIcon/>
+                    <span>WISHLISTED</span>
+                  </div>
+                ) : (
+                  <div>
+                    <FavoriteBorderOutlinedIcon className="heart-icon" />
+                    <span onClick={handleAddToWishlist}>WISHLIST</span>
+                  </div>
+                )}
               </Button>
             </div>
-            <div>
+            <div className="accordion-container">
               <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                   <Accordion.Header className="accordion-title">
@@ -121,31 +203,64 @@ const ProductInfo = ({ productDetails }) => {
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
                   <Accordion.Header className="accordion-title">
-                    <ArticleOutlinedIcon className="accordion-icon"/>
+                    <ArticleOutlinedIcon className="accordion-icon" />
                     <div className="accordion-subtitle">
                       <p>Product Description</p>
                       <p>Manufacture, Care and Fit</p>
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="accordion-body">
-                    {
-                      productDetails?.description
-                    }
+                    {productDetails?.description}
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header className="accordion-title">
-                    <SwapHorizontalCircleOutlinedIcon className="accordion-icon"/>
+                    <SwapHorizontalCircleOutlinedIcon className="accordion-icon" />
                     <div className="accordion-subtitle">
                       <p>15 Days Returns & Exchange</p>
                       <p>Know about return & exchange policy</p>
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="accordion-body">
-                  Easy returns upto 15 days of delivery. Exchange available on select pincodes
+                    Easy returns upto 15 days of delivery. Exchange available on
+                    select pincodes
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+            </div>
+            <div className="trustbadge-container">
+              <div>
+                <Image
+                  src="https://images.bewakoof.com/web/trust-cart.svg"
+                  className="trustbadge-img"
+                  fluid
+                  loading="lazy"
+                  alt="offer"
+                />
+                <p className="trustbadge-title">100% SECURE PAYMENTS</p>
+              </div>
+              <div>
+                <Image
+                  src="https://images.bewakoof.com/web/Easy-Returns.svg"
+                  className="trustbadge-img"
+                  fluid
+                  loading="lazy"
+                  alt="offer"
+                />
+                <p className="trustbadge-title">
+                  EASY RETURNS & INSTANT REFUNDS
+                </p>
+              </div>
+              <div>
+                <Image
+                  src="https://images.bewakoof.com/web/Globe.svg"
+                  className="trustbadge-img"
+                  fluid
+                  loading="lazy"
+                  alt="offer"
+                />
+                <p className="trustbadge-title">SHIPPING GLOBALLY</p>
+              </div>
             </div>
           </div>
         </Col>

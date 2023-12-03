@@ -1,4 +1,9 @@
-/* @import 'bootstrap/dist/css/bootstrap.min.css'; */
+.signleproduct-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/* bredacumbox section */
 
 .breadcumbox-wrapper ul {
   display: flex;
@@ -18,6 +23,7 @@
 }
 
 /* product info section */
+
 .productinfo-wrapper {
   display: flex;
   justify-content: center;
@@ -26,11 +32,21 @@
 .product-gallery {
   width: 47%;
 }
+
 .details-wrapper {
-  /* width: 49%; */
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
+  height: 540px;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.details-wrapper::-webkit-scrollbar{
+  display: none !important;
 }
 .brand-name {
   font-size: 16px;
@@ -198,17 +214,20 @@
 .button-wrapper .heart-icon {
   width: 20px;
 }
-.accordion-title {
-  position: relative;
-  line-height: 8px !important;
+
+/* accordion section */
+
+.accordion-container {
+  width: 100%;
 }
-.accordion-title div {
-  margin: 0 10px;
-  padding: 2px 2px 0 0;
+.accordion-title {
+  width: 100%;
+  height: 100px;
+  border-bottom: 1ps solid #eeeeee;
 }
 
 .accordion-subtitle p:first-child {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
 }
 .accordion-subtitle p:last-child {
@@ -226,13 +245,31 @@
   border-top: 2px solid #eeeeee;
   border-bottom: 2px solid #eeeeee;
 }
-
+.trustbadge-container{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+  width: 85%;
+}
+.trustbadge-img{
+  height: 50px;
+}
+.trustbadge-title{
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.5;
+  width: 80px;
+}
 @media only screen and (max-width: 765px) {
   .details-wrapper {
     width: 100%;
     margin: 20px;
   }
   .row {
+    display: flex;
+    justify-content: center;
     text-align: start;
   }
   .product-gallery {
@@ -241,16 +278,45 @@
   }
 }
 @media (max-width: 767px) {
-  .size-container::before,
-  .tribe-text::before {
-    width: calc(100% + 10px);
-  }
   .details-wrapper {
     margin-top: 20px !important;
   }
 }
 
-.review {
-  margin: 2px;
-  border: 1px solid gray;
+/* review section */ 
+
+.review-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.review-container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.review-title{
+  font-weight: 550;
+  font-size: 20px;
+}
+.review-item{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: 1px solid #cfcfd1;
+}
+.review-text{
+  font-size: 16px;
+  color: #696969;
+}
+.review-username{
+  font-size: 14px;
+  opacity: 0.7;
+}
+.review-date{
+  font-size: 12px;
+  opacity: 0.5;
 }
