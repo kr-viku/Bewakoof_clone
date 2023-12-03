@@ -206,6 +206,9 @@
 .add-to-bag:hover {
   background-color: #ffd84d;
 }
+.filled-heart-icon{
+  color: red;
+}
 .button-wrapper .add-to-wishlist {
   background-color: #ebebeb;
   color: #949497;

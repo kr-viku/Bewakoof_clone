@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -10,19 +10,21 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SwapHorizontalCircleOutlinedIcon from "@mui/icons-material/SwapHorizontalCircleOutlined";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { useBaseApi } from "../../../contextApi/BaseDomainContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ProductInfo = ({ productDetails }) => {
-  console.log(productDetails);
+  // console.log(productDetails);
 
   const baseURL = useBaseApi();
   const navigate = useNavigate();
   const [wishlisted, setWishlisted] = useState(false);
+  // const {fetchingWishlistProducts} = wishlistProductsContext();
+
+  const [wishlistItems, setWishlistItems] = useState(null);
   const accessToken = localStorage.getItem("accessToken");
   const images = [
     {
@@ -48,6 +50,29 @@ const ProductInfo = ({ productDetails }) => {
     { color: "gray", colorName: "gray" },
   ];
 
+  const fetchingWishlistProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://academics.newtonschool.co/api/v1/ecommerce/wishlist",
+        {
+          headers: {
+            projectId: "4stjj1sb1x5a",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+          },
+        }
+      );
+
+      // console.log(response.data.data.items);
+      setWishlistItems(response.data.data.items);
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    fetchingWishlistProducts();
+  }, [wishlisted]);
+  console.log(wishlistItems);
+  // fetchingWishlistProducts();
   const handleAddItemToCart = async () => {
     try {
       if (accessToken === null) {
@@ -55,7 +80,6 @@ const ProductInfo = ({ productDetails }) => {
       } else {
         const response = await axios.patch(
           `https://academics.newtonschool.co/api/v1/ecommerce/cart/${productDetails._id}`,
-          // '{\n    "quantity" : 1 ,\n    "size" : "S"\n}',
           {
             quantity: 1,
             size: "S",
@@ -100,15 +124,18 @@ const ProductInfo = ({ productDetails }) => {
 
         console.log("response", response);
         alert(response.data.message);
-        if(response.status === 200)
-        {
+        if (response.status === 200) {
           setWishlisted(true);
         }
       }
     } catch (e) {
-      console.log("error while adding to cart", e);
+      alert(e.response.data.message);
     }
   };
+
+  const handleRemoveFromWishlist = async () =>{
+
+  }
   return (
     <div className="productinfo-wrapper">
       <Row>
@@ -176,10 +203,16 @@ const ProductInfo = ({ productDetails }) => {
                 <span onClick={handleAddItemToCart}>ADD TO BAG</span>
               </Button>
               <Button className="add-to-wishlist">
-                {wishlisted ? (
+
+                {/* checking if the product already exist in the wishlist */}
+
+                {wishlisted ||
+                wishlistItems
+                  ?.map((item) => item.products._id)
+                  .includes(productDetails._id) ? (
                   <div>
-                    <FavoriteIcon/>
-                    <span>WISHLISTED</span>
+                    <FavoriteIcon className="filled-heart-icon"/>
+                    <span onClick={handleRemoveFromWishlist}>WISHLISTED</span>
                   </div>
                 ) : (
                   <div>
