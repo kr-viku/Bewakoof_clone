@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+
 import Accordion from "react-bootstrap/Accordion";
 import "./SingleProductCard.css";
 
@@ -68,7 +69,9 @@ const ProductInfo = ({ productDetails }) => {
 
       // console.log(response.data.data.items);
       setWishlistItems(response.data.data.items);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchingCartProducts = async () => {

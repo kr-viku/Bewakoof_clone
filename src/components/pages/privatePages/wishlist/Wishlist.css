@@ -1,3 +1,30 @@
+.wishlist-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.whishlist-container{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    gap: 50px;
+}
+.whishlist-product-image{
+    width:250px;
+}
+.whishlist-product-details{
+    display: flex;
+    flex-direction: column;
+
+}
+.whishlist-product-brand-name{
+    font-size: 12px;
+}
+.whishlist-product-title{
+    font-size: 19px;
+}
+
 .empty-wishlist-wrapper{
     display: flex;
     justify-content: center;
