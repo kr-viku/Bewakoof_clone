@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
-import "./Wishlist.css";
 import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+
+import "./Wishlist.css";
+
+
 const Wishlist = () => {
+
   const navigate = useNavigate();
-  const [wishlistItems, setWishlistItems] = useState(null);
+
+  const [wishlistItems, setWishlistItems] = useState([]);
+  const[loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchingWishlistProducts();
+  }, []);
+
 
   const fetchingWishlistProducts = async () => {
     try {
@@ -26,18 +39,79 @@ const Wishlist = () => {
     }
   };
 
-  useEffect(() => {
-    fetchingWishlistProducts();
-  }, []);
+ 
   console.log(wishlistItems);
 
-  if (wishlistItems !== null) {
+  const handleAddToCart = async(event)=>{
+    // console.log(event.target.value);
+    const id = event.target.value
+    try{
+      const response = await axios.patch(
+        `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
+        {
+          quantity: 1,
+          size: "S",
+        },
+        {
+          headers: {
+            projectId: "4stjj1sb1x5a",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+          },
+        }
+      );
+
+      console.log("response", response);
+      alert(response.data.message);
+
+      if(response.status == 200)
+      {
+        setLoading(true);
+        handleRemoveFromWishlist(id);
+      }
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+
+  const handleRemoveFromWishlist = async (id, event) => {
+    console.log(id);
+    const Id = id ? id : event.target.value;
+    const response = await axios.delete(
+      `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${Id}`,
+      {
+        headers: {
+          projectId: "4stjj1sb1x5a",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjFmNjBhMWQ4NzkyNjJkMmYzYjFlNyIsImlhdCI6MTcwMTUzNjAxMywiZXhwIjoxNzMzMDcyMDEzfQ.z5QUj3-xDAISsrGF5c02BVpH07mElJz85OBHuOumYks",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    // console.log(response);
+    if(response.status === 200)
+    {
+      setLoading(false);
+    }
+  };
+  if (wishlistItems.length === 0) {
+    if(loading)
+    {
+      return(
+        <h3>Loading...</h3>
+      )
+    }
     return (
       <div className="wishlist-wrapper">
         <div className="whishlist-container">
           {wishlistItems?.map((item, index) => {
             return (
-              <div className="whishlist-item-container">
+              <div className="whishlist-item-container" key={index}>
+                <CancelTwoToneIcon className="wishlist-cross-icon" onClick={handleRemoveFromWishlist} value={item.products._id}/>
                 <Image
                   src={item.products.displayImage}
                   alt={item.products.name}
@@ -46,15 +120,22 @@ const Wishlist = () => {
                 />
                 <div className="whishlist-product-details">
                   <h3 className="whishlist-product-brand-name">Bewakoof®</h3>
-                  <h3 className="whishlist-product-title">{item.products.name}</h3>
+                  <h3 className="whishlist-product-title">
+                    {item.products.name}
+                  </h3>
+                  <div className="whishlist-product-price-container">
+                    <div className="wishlist-product-selling-price-container">
+                      <span className="wishlist-rs-symbol">₹</span>
+                      <h3 className="wishlist-product-selling-price">
+                        {item.products.price}
+                      </h3>
+                    </div>
 
-                  <p>{item.products.price}</p>
-                  
-                  
-                  <p>₹1200</p>
-                  <p>65% OFF</p>
+                    <p className="wishlist-product-actual-price">₹1200</p>
+                    <p className="wishlist-product-disc-percentage">65% OFF</p>
+                  </div>
+                  <Button className="wishlist-add-to-bag" onClick={handleAddToCart} value={item.products._id}>ADD TO BAG</Button>
                 </div>
-                <Button>ADD TO BAG</Button>
               </div>
             );
           })}
@@ -80,6 +161,7 @@ const Wishlist = () => {
       </div>
     );
   }
+  
 };
 
 export default Wishlist;
