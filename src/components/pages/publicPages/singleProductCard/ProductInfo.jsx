@@ -240,37 +240,35 @@ const ProductInfo = ({ productDetails }) => {
               })}
             </div>
             <div className="button-wrapper">
-              <Button className="add-to-bag">
+             
                 {cartItems
                   ?.map((item) => item.product?._id)
                   .includes(productDetails?._id) ? (
-                  <div>
+                    <Button className="add-to-bag">
                     <LocalMallTwoToneIcon />
                     <span onClick={()=>{navigate('/cart')}}>GO TO BAG</span>
-                  </div>
+                  </Button>
                 ) : (
-                  <div>
+                  <Button className="add-to-bag">
                     <LocalMallOutlinedIcon className="bag-icon" />
                     <span onClick={handleAddItemToCart}>ADD TO BAG</span>
-                  </div>
+                  </Button>
                 )}
-              </Button>
-              <Button className="add-to-wishlist">
+              
                 {/* checking if the product already exist in the wishlist */}
                 {wishlistItems
                   ?.map((item) => item.products?._id)
                   .includes(productDetails?._id) ? (
-                  <div>
+                    <Button className="add-to-wishlist" onClick={handleRemoveFromWishlist}>
                     <FavoriteIcon className="filled-heart-icon" />
-                    <span onClick={handleRemoveFromWishlist}>WISHLISTED</span>
-                  </div>
+                    <span >WISHLISTED</span>
+                  </Button>
                 ) : (
-                  <div>
+                  <Button className="add-to-wishlist" onClick={handleAddToWishlist}>
                     <FavoriteBorderOutlinedIcon className="heart-icon" />
-                    <span onClick={handleAddToWishlist}>WISHLIST</span>
-                  </div>
+                    <span >WISHLIST</span>
+                 </Button>
                 )}
-              </Button>
             </div>
             <div className="accordion-container">
               <Accordion defaultActiveKey="0">
