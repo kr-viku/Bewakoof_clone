@@ -77,11 +77,10 @@ const Wishlist = () => {
   }
 
 
-  const handleRemoveFromWishlist = async (id, event) => {
-    console.log(id);
-    const Id = id ? id : event.target.value;
+  const handleRemoveFromWishlist = async (id) => {
+    setLoading(true);
     const response = await axios.delete(
-      `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${Id}`,
+      `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,
       {
         headers: {
           projectId: "4stjj1sb1x5a",
@@ -92,26 +91,27 @@ const Wishlist = () => {
       }
     );
 
-    // console.log(response);
     if(response.status === 200)
     {
+      if(response?.data?.data?.items){
+        setWishlistItems(response.data.data.items)
+      }
       setLoading(false);
     }
   };
-  if (wishlistItems.length === 0) {
-    if(loading)
-    {
-      return(
-        <h3>Loading...</h3>
-      )
-    }
+
+  if(loading){
+    return <h3>Loading...</h3>
+  }
+
+  if (wishlistItems.length !== 0) {
     return (
       <div className="wishlist-wrapper">
         <div className="whishlist-container">
           {wishlistItems?.map((item, index) => {
             return (
               <div className="whishlist-item-container" key={index}>
-                <CancelTwoToneIcon className="wishlist-cross-icon" onClick={handleRemoveFromWishlist} value={item.products._id}/>
+                <CancelTwoToneIcon className="wishlist-cross-icon" onClick={() => handleRemoveFromWishlist(item.products._id)} value={item.products._id}/>
                 <Image
                   src={item.products.displayImage}
                   alt={item.products.name}
